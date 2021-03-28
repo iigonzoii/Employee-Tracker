@@ -65,10 +65,10 @@ CREATE TABLE employee (
     ON DELETE CASCADE
 
 );
-
-/* SELECT * FROM role;
+-- Below we select all from each table using the *
+   SELECT * FROM role;
    SELECT * FROM department;
-   SELECT * FROM employee; */
+   SELECT * FROM employee; 
 
 
 
