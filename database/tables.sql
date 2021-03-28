@@ -15,6 +15,7 @@ CREATE TABLE department (
 );
 
 -- here we create a table for our employees roles
+-- !why is role blue
 CREATE TABLE role (
     -- here we require an id and set it to auto increment
     id INT NOT NULL auto_increment,
@@ -25,10 +26,12 @@ CREATE TABLE role (
     -- row for department id/ also refrences parent table
     department_id INT,
     -- here we establish our foreign id and the location it was defined and that we are refrencing
+    -- !should I use constraint keyword here or will this function just as is?
     FOREIGN KEY (deparment_id)
     REFERENCES department(id)
     -- with cascade we update both parent and child tables at the same time
     ON UPDATE CASCADE
+    -- !why is cascade blue
     ON DELETE CASCADE,
     -- set primary key to id
     PRIMARY KEY(id)
@@ -47,13 +50,17 @@ CREATE TABLE employee (
     -- make  a row called manager id
     manager_id INT,
     -- here we establish our foreign id and the location it was defined and that we are refrencing
+    -- !should I use constraint keyword here or will this function just as is?
     FOREIGN KEY (role_id) REFERENCES role(id)
     -- with cascade we update both parent and child tables at the same time
+    -- !why is cascade blue
     ON UPDATE CASCADE
     ON DELETE CASCADE,
     -- here we establish our foreign id and the location it was defined and that we are refrencing
+    -- !should I use constraint keyword here or will this function just as is?
     FOREIGN KEY (manager_id) REFERENCES employee(id)
     -- with cascade we update both parent and child tables at the same time
+    -- !why is cascade blue
     ON UPDATE CASCADE
     ON DELETE CASCADE
 
