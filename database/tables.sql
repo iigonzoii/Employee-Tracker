@@ -5,14 +5,33 @@ CREATE DATABASE employees;
 USE employees;
 
 -- here we create our Departmnent table
-CREATE TABLE department;(
+CREATE TABLE department(
     -- here we require an id and set it to auto increment
     id INT NOT NULL auto_increment,
     -- make a row called name
     name VARCHAR(30),
-    -- set primary id to id
+    -- set primary key to id
     PRIMARY KEY(id)
 );
+-- here we create a table for our employees roles
+CREATE TABLE role(
+    -- here we require an id and set it to auto increment
+    id INT NOT NULL auto_increment,
+    -- make a row called title
+    title VARCHAR(30) NOT NULL,
+    -- row for salary
+    salary DECIMAL,
+    -- row for department id/ also refrences parent table
+    department_id INT,
+    -- here we establish our foreign id and the location it was defined and that we are refrencing
+    FOREIGN KEY (deparment_id)
+    REFERENCES department(id)
+    -- with cascade we update both parent and child tables at the same time
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+    -- set primary key to id
+    PRIMARY KEY(id)
+)
 
 
 
