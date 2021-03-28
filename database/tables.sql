@@ -66,5 +66,9 @@ CREATE TABLE employee (
 
 );
 
+/* SELECT * FROM role;
+   SELECT * FROM department;
+   SELECT * FROM employee; */
+
 
 
