@@ -15,13 +15,13 @@ VALUES ("Sales Lead", 100000, 1),
     ("Lawyer", 190000, 4);
 -- ! how do i identify the manager id if the employees havent been defined yet
     INSERT INTO employee(first_name, last_name, role_id, manager_id)
-    VALUES("John", "Doe", 1,?),
-    ("Mike" "Chan", 1, ?),
+    VALUES("John", "Doe", 1, 3),
+    ("Mike" "Chan", 1, 1),
     ("Ashley", "Rodriguez", 2, NULL),
-    ("Kevin" "Tupik", 2, ?)
+    ("Kevin" "Tupik", 2, 3)
     ("Malia", "Brown", 3, NULL),
     ("Sarah", "Lourd", 4, NULL),
-    ("Tom", "Allen", 4, ?),
+    ("Tom", "Allen", 4, 6),
     ("Chirstian", "Eckenrode", 2, NULL);
 
 
