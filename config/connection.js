@@ -1,15 +1,13 @@
-const Sequelize = require('sequelize');
+// !docs say i should use mysql2, but thats not what we use here. does it matter?
+const mysql = require('mysql2');
 require('dotenv').config();
 
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  {
+const myConnection = mysql.createConnection({
     host: 'localhost',
-    dialect: 'mysql',
-    port: 3306
-  }
-);
+    port: 3306,
+    user: 'root',
+    password: process.env.DB_PASSWORD,
+    database: 'employee_tracker'
+  });
 
-module.exports = sequelize;
+  module.exports = myConnection
