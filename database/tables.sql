@@ -65,6 +65,10 @@ CREATE TABLE employee (
     ON DELETE CASCADE
 
 );
+-- ! start in package.json?
+-- !ask nikki how to remove dependancies
+-- ! also about seed in workbench
+--  !if we are using the table arent we taking all the data from that table. wouldnt it make more sense to use select all when doing query stuff and functions/joins?
 -- Below we select all from each table using the *
    SELECT * FROM role;
    SELECT * FROM department;

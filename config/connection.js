@@ -1,4 +1,3 @@
-// !docs say i should use mysql2, but thats not what we use here. does it matter?
 const mysql = require('mysql2');
 require('dotenv').config();
 
