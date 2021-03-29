@@ -1,3 +1,5 @@
+const inquirer = require("inquirer")
+
 const runIt = () => {
     inquirer
         .prompt({
