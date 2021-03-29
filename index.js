@@ -1,5 +1,7 @@
 const inquirer = require("inquirer")
 
+// !do i put the const connection thing in here
+
 const runIt = () => {
     inquirer
         .prompt({
@@ -8,12 +10,13 @@ const runIt = () => {
             message: 'What would you like to do?',
             choices: [
                 'View All Employees?',
-                'View All Employees By Department?',
-                'View All Employees By Manager?',
-                'Add Employee',
-                'Remove Employee',
-                'Update Employee Role',
-                'Update Employee Manager'
+                'View All Departments?',
+                'View Employee Roles?',
+                'Add Employee?',
+                'Add Department?',
+                'Add Role?',
+                'Update Employee Roles?'
+                
             ],
         })
         .then((answer) => {
@@ -22,29 +25,31 @@ const runIt = () => {
                     viewAllEmployees();
                     break;
 
-                case 'View All Employees By Department?':
-                    viewAllEmployeesByDepartment();
+                case 'View All Departments?':
+                    viewAllDepartments();
                     break;
 
-                case 'View All Employees By Manager?':
-                    viewAllEmployeesByManager();
+                case 'View Employee Roles?':
+                    viewEmployeeRoles();
                     break;
 
-                case 'Add Employee':
+                case 'Add Employee?':
                     addEmployee();
                     break;
 
-                case 'Remove Employee':
-                    removeEmployee()
+                case 'Add Department?':
+                    addDepartment()
                     break;
 
-                case 'Update Employee Role':
+                    case 'Add Role?':
+                    addRole()
+                    break;
+
+                case 'Update Employee Role?':
                     updateEmployeeRole()
                     break;
 
-                case 'Update Employee Role':
-                    updateEmployeeManager()
-                    break;
+                
 
                 //! does connection end go here? doesnt make sense to connection.end();
                 default:
@@ -53,3 +58,13 @@ const runIt = () => {
             }
         });
 };
+
+// todo viewAllEmployees(){}
+// todo viewAllDepartments(){}
+// todo viewEmployeeRoles(){}
+// todo addEmployee(){}
+// todo addDepartment(){}
+// todo addRole(){}
+// todo updateEmployeeRole(){}
+
+    
