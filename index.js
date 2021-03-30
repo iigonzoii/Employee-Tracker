@@ -1,6 +1,6 @@
 const inquirer = require("inquirer")
 
-// !do i put the const connection thing in here
+
 
 const runIt = () => {
     inquirer
@@ -41,7 +41,7 @@ const runIt = () => {
                     addDepartment()
                     break;
 
-                    case 'Add Role?':
+                case 'Add Role?':
                     addRole()
                     break;
 
@@ -49,12 +49,10 @@ const runIt = () => {
                     updateEmployeeRole()
                     break;
 
-                
-
-                //! does connection end go here? doesnt make sense to connection.end();
                 default:
-                    console.log(`Invalid action: ${answer.action}`);
+                    console.log(`Invalid action: ${answer.firstAnswer}`);
                     break;
+
             }
         });
 };
@@ -67,4 +65,3 @@ const runIt = () => {
 // todo addRole(){}
 // todo updateEmployeeRole(){}
 
-    

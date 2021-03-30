@@ -9,10 +9,8 @@ const myConnection = mysql.createConnection({
     database: 'employee_tracker'
   });
 
-  module.exports = myConnection
-
-  // !do i put the const connection thing in here? instead of in my index.js since its part of the connection, i think it goes here.
-  /* connection.connect((err) => {
+  connection.connect((err) => {
   if (err) throw err;
   runSearch();
-});*/
+})
+module.exports = myConnection

@@ -13,8 +13,7 @@ VALUES ("Sales Lead", 100000, 1),
     ("Accountant" 125000, 3),
     ("Legal Team lead", 250000, 4),
     ("Lawyer", 190000, 4);
--- ! how do i identify the manager id if the employees havent been defined yet
--- !do they get id's assigned to them in order since they are getting inserted into a table that has id set as primary? 
+
     INSERT INTO employee(first_name, last_name, role_id, manager_id)
     VALUES("John", "Doe", 1, 3),
     ("Mike" "Chan", 1, 1),
