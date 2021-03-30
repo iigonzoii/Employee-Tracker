@@ -1,5 +1,7 @@
-const mysql = require('mysql2');
+
+const mysql = require('mysql');
 require('dotenv').config();
+
 
 const myConnection = mysql.createConnection({
     host: 'localhost',
@@ -9,8 +11,8 @@ const myConnection = mysql.createConnection({
     database: 'employee_tracker'
   });
 
-  connection.connect((err) => {
+  myConnection.connect((err) => {
   if (err) throw err;
-  runSearch();
+  // runIt();
 })
 module.exports = myConnection
