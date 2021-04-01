@@ -13,6 +13,9 @@ CREATE TABLE department (
     -- set primary key to id
     PRIMARY KEY(id)
 );
+-- !TA   so in reference to line 12 we are not creating a row called name. we are stating that there will be a row in this table, and that row will be a string. we are basically setting a place holder for when we make our seed file. so when we say "insert into" what follows in the () is going to be the rows visual display name, and the "values" are going to be the columns that run horizontally and match with the corresponding row?
+
+-- ! TA  when using joins the columns syntax is actually referring to the rows that run vertically and represent the field name not the values
 
 -- here we create a table for our employees roles
 CREATE TABLE role (
