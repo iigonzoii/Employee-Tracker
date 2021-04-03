@@ -9,7 +9,6 @@
   - [License](#license)
   - [Contributors](#contributors)
   - [Tests](#tests)
-  - [Deployed Site](#deployed-site)
   - [Questions](#questions)
 
   ## Description
@@ -20,7 +19,7 @@
   npm mysql
   npm console.table
 
-  <img alt="screenshot of landing page" src="./images/et.jpg">
+  <img alt="screenshot of app in use" src="./images/et.jpg">
 
   ## Usage
   * clone to your local machine
@@ -46,6 +45,6 @@
   You can find me on GitHub at [iigonzoii](https://github.com/iigonzoii)
 
   Email me if you run into any questions at a.gonzalez418@gmail.com
-  
+
   <a href="https://drive.google.com/file/d/1o5mH19KhQ79HI4axrDuIulG5ifPUnsfP/view?usp=sharing" target="_blank">heres a walkthrough of the application if you need further review!</a>
  
