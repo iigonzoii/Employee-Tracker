@@ -21,7 +21,7 @@ const runIt = async () => {
                 new inquirer.Separator(),
                 'Add Role?',
                 new inquirer.Separator(),
-                'Update Employee Roles?',
+                'Update Employee Role?',
                 new inquirer.Separator(),
                 'Exit'
 
@@ -73,32 +73,30 @@ runIt()
 
 //here we use SELECT to display all the tables and rows we would like to reference
 // We use CONCAT AS to make a variable thatwill store the specified information together in one place to call on later
-// We use From LEFT JOIN ON to dictate what table information is being used from whichtables.
+// We use From LEFT JOIN ON to dictate what table information is being used from which tables.
 const viewAllEmployees = () => {
 
     myConnection.query("SELECT CONCAT(employee.first_name, ' ', employee.last_name) AS employee, role.title, role.salary, department.name as department_name,  CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id LEFT JOIN employee manager ON manager.id = employee.manager_id ORDER BY employee.last_name", function (err, result) {
         console.table(result)
+        runIt()
     })
-    runIt()
 
 }
-// this one should also be pretty simple and resemble the above
-// ! I had to delete extra rows from my workbench because it was populating everything three times back to back 
-
+// this is the most simple of the whole app. we select all info from department table and display it using our console.table 
 const viewAllDepartments = () => {
     myConnection.query("SELECT * FROM department", function (err, result) {
         console.table(result)
+        runIt()
     })
-    runIt()
 }
 
-// ! I had to delete extra rows from my workbench because it was populating everything three times back to back 
-// this one should be pretty simple as well
+
+// here we are selecting the title column from the role table so we can view the roles
 const viewEmployeeRoles = () => {
     myConnection.query("SELECT title FROM role", function (err, result) {
         console.table(result)
+        runIt()
     })
-    runIt()
 }
 // here we ask the user questions with inquirer that we will convert into data to populate our table moving forward
 const addEmployee = async () => {
@@ -125,33 +123,12 @@ const addEmployee = async () => {
                 message: "What is the id number for this employees manager?",
                 choices: [
                     1,
-                    new inquirer.Separator(),
                     2,
-                    new inquirer.Separator(),
                     3,
-                    new inquirer.Separator(),
                     6,
                 ],
             }])
-    // .then((answer2) => {
-
-
-    //       myConnection.query("INSERT INTO employee SET ?", 
-    //       {
-
-    //           first_name: answer2.firstName,
-    //           last_name: answer2.lastName,
-    //           manager_id: answer2.managerId,
-    //           role_id: answer2.roleId
-
-    //         }, function(err){
-    //             if (err) throw err
-    //             console.table(answer2)
-    //           runIt()
-    //       })
-
-    //   })
-
+    
     myConnection.query("INSERT INTO employee SET ?",
         {
 
@@ -168,7 +145,7 @@ const addEmployee = async () => {
 }
 
 
-// shouldnt need joins for this one either
+// using inset into set and calling department as the table i want to access so i can insert the new data based on the users choice
 const addDepartment = async () => {
     let answer3 = await inquirer.prompt({
         name: "newDepartment",
@@ -177,17 +154,19 @@ const addDepartment = async () => {
     })
     myConnection.query("INSERT INTO department SET ?",
         {
-        // here we take the users inputed data and store it into the name column of the Department table
+            // here we take the users inputed data and store it into the name column of the Department table
             name: answer3.newDepartment
 
+        }, function (err, result) {
+            console.table(answer3)
+            runIt()
         })
-    console.table(answer3)
-    runIt()
+
 }
-// same
+// here i set up a function to add a new role using insert into set
 const addRole = async () => {
     let answer4 = await inquirer.prompt([{
-        name: "newRoll",
+        name: "newRole",
         type: "input",
         message: "what is the name of the new role?"
     },
@@ -203,16 +182,64 @@ const addRole = async () => {
     }])
     myConnection.query("INSERT INTO role SET ?",
         {
-       
+
             title: answer4.newRole,
             department_id: answer4.newRollDepartment
 
+        }, function (err, result) {
+            console.table(answer4)
+            runIt()
         })
-    console.table(answer4)
-    runIt()
+
 }
-//! im not sure about this one though... this is going to access employee and then change their role... i dont know what thats going to look like 
-// todo updateEmployeeRole(){}
+//here we update our employee roll using update set where. I used id numbers and made a choice so the user has no option but to choose a valid entry
+const updateEmployeeRole = async () => {
+    let answer5 = await inquirer.prompt([
+        {
+            name: "updateEmployeeId",
+            type: "list",
+            message: "what is the ID number of the employee whos role you are changing?",
+            choices: [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        },
+        {
+            name: "updatedEmployeeRollId",
+            type: "list",
+            message: "what is the ID number of the new role?",
+            choices:[
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        }])
+    myConnection.query("UPDATE employee SET ? WHERE ?",
+        [{
+
+            role_id: answer5.updatedEmployeeRollId,
+
+        },
+        {
+
+            id: answer5.updateEmployeeId
+
+        }], function (err, result) {
+            console.table(answer5)
+            runIt()
+        })
+}
+
 
 
 
